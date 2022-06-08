@@ -80,15 +80,13 @@ body {
 }
 
 .container-form form {
-	height: 512px;
-
 	background: var(--form-background);
 
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 
-	padding: 30px 118px;
+	padding: 50px 118px;
 }
 
 .container-form header {
@@ -161,26 +159,26 @@ body {
 }
 
 .container form input:focus {
-	border: 1px solid #FFC632;
+	border: 1px solid var(--primary-color);
 	box-shadow: 0px 0px 0px 2px #FFDE88;
 	border-radius: 4px;
 	transition: 0.2s;
 }
 
-.container form input:nth-child(3), form input:nth-child(5)  {
+.container form input:nth-child(4), form input:nth-child(6), .container form .repeatPassword {
 	background-image: url(../images/mail.svg);
 	background-repeat: no-repeat;
 	background-position: 10px;
 }
 
-.container form input:focus:nth-child(3), form input:focus:nth-child(5) {
+.container form input:focus:nth-child(4) {
 	background-image: url(../images/mail-focus.svg);
 	background-repeat: no-repeat;
 	background-position: 10px;
 }
 
-.container form input:nth-child(5) { background-image: url(../images/lock.svg); }
-.container form input:nth-child(5):focus { background-image: url(../images/lock-focus.svg); }
+.container form input:nth-child(6), .container form .repeatPassword { background-image: url(../images/lock.svg); }
+.container form input:nth-child(6):focus, .container form .repeatPassword:focus { background-image: url(../images/lock-focus.svg); }
 
 .container form h5 {
 	font-family: 'Roboto';
@@ -204,10 +202,8 @@ body {
 	font-weight: 600;
 	font-size: 14px;
 	line-height: 21px;
-	/* identical to box height */
 
-
-	color: #FFC632;
+	color: var(--primary-color);
 	cursor: pointer;
 	margin-bottom: 20px;
 }
@@ -216,7 +212,7 @@ body {
 	width: 100%;
 	height: 51px;
 
-	background: #FFC632;
+	background: var(--primary-color);
 	border-radius: 4px;
 	outline: none;
 	border: 0;
@@ -234,7 +230,7 @@ body {
 }
 
 .container form button:focus {
-	border: 1px solid #FFC632;
+	border: 1px solid var(--primary-color);
 	box-shadow: 0px 0px 0px 2px #FFDE88;
 	border-radius: 4px;
 	transition: 0.2s;
@@ -254,11 +250,12 @@ body {
 	text-align: center;
 	margin-top: 14px;
 
-	color: #FFC632;
+	color: var(--primary-color);
 }
 
 .container form h6 span{
 	font-weight: 600;
+	cursor: pointer;
 }
 
 
