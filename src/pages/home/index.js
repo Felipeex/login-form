@@ -14,7 +14,7 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 export default function Home() {
-    const [isSignup, SetIsSignUp] = useState(true)
+    const [isSignup, SetIsSignUp] = useState(false)
 
     return (
         <div className="container">
