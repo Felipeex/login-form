@@ -52,6 +52,7 @@ table {
 
 body {
     background: var(--background);
+	font-family: 'Poppins';
 }
 
 .container {
@@ -146,7 +147,7 @@ body {
 	font-size: 14px;
 	line-height: 16px;
 	padding: 0px 37px;
-	margin-bottom: 20px;
+	/* margin-bottom: 20px; */
 
 	color: #fff;
 
@@ -165,20 +166,20 @@ body {
 	transition: 0.2s;
 }
 
-.container form input:nth-child(4), form input:nth-child(6), .container form .repeatPassword {
+.container form .inputs input {
 	background-image: url(../images/mail.svg);
 	background-repeat: no-repeat;
 	background-position: 10px;
 }
 
-.container form input:focus:nth-child(4) {
+.container form .inputs input:focus {
 	background-image: url(../images/mail-focus.svg);
 	background-repeat: no-repeat;
 	background-position: 10px;
 }
 
-.container form input:nth-child(6), .container form .repeatPassword { background-image: url(../images/lock.svg); }
-.container form input:nth-child(6):focus, .container form .repeatPassword:focus { background-image: url(../images/lock-focus.svg); }
+.container form .Password { background-image: url(../images/lock.svg) !important; }
+.container form .Password:focus { background-image: url(../images/lock-focus.svg) !important; }
 
 .container form h5 {
 	font-family: 'Roboto';
@@ -190,6 +191,12 @@ body {
 	color: #A9AFB9;
 
 	margin-left: 5px;
+}
+
+.inputs span {
+	font-size: 15px;
+	font-weight: 200;
+	color: #ff5050;
 }
 
 .container form .checkbox {
@@ -227,6 +234,10 @@ body {
 
 	color: #473404;
 	cursor: pointer;
+}
+
+.container form button:disabled {
+	opacity: 0.5;
 }
 
 .container form button:focus {
@@ -297,6 +308,10 @@ body {
 	display: flex;
 }
 
+.inputs {
+	margin-bottom: 20px;
+}
+
 @media screen and (max-width: 1298px){
 	.container-form form {
 		height: 100%;
@@ -329,4 +344,17 @@ body {
 	.container-form form {
 		justify-content: none;
 	}
+}
+
+form .Loading {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
