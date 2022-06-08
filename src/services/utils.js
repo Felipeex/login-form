@@ -1,3 +1,4 @@
+/* imports */
 import { toast } from "react-toastify"
 import api from "./api"
 
@@ -6,14 +7,32 @@ const errors = {
     "Emptyemail": "E-mail é obrigatório",
     "Emptypassword": "Senha é obrigatório",
     "ValidateEmail": "Insira um e-mail válido",
+    "RepeatPassword": "As senhas não coincidem"
+}
 
-    "RepeatPassword": "As senhas não coincidem",
+/* request sign-Up */
+async function SignInRequest(email, password) {
+    try {
+        const SignIn = await api.post('/signin', { email, password })
+        return SignIn
+    } catch (err) {
+        throw new Error(err.response.data.error)
+    }
+}
+
+/* request Sign-Up */
+async function SignUpRequest(email, password) {
+    try {
+        const SignUp = await api.post('/signup', { email, password })
+        return SignUp
+    } catch (err) {
+        throw new Error(err.response.data.error)
+    }
 }
 
 /* notify function */
 function Notify(type, desc) {
     const position = { position: "top-left" }
-
     if (type === 'warn') {
         toast.warn(desc, position)
     } else if(type === 'error') {
@@ -31,45 +50,6 @@ function ValidadeEmail(email) {
     return email.match(ValidadeEmail)
 }
 
-/* request sign-Up */
-async function SignInRequest(setIsSubmitRequest, email, password) {
-    try {
-        setIsSubmitRequest(true)
-
-        await api.post('/signin', { email, password })
-
-        Notify('success', 'Logado com sucesso!')
-
-        setIsSubmitRequest(false)
-    } catch (err) {
-        setIsSubmitRequest(false)
-
-        const { status, data } = err.response
-        if (status === 0)
-        return Notify('error', 'Ocorreu um erro.')
-        Notify('error', data.error)
-    }
-}
-
-/* request sign-Up */
-async function SignUpRequest(setIsSubmitRequest, setSignup, email, password) {
-    try {
-        setIsSubmitRequest(true)
-
-        const login = await api.post('/signup', { email, password })
-        Notify('success', login.data.message)
-        setSignup(false)
-        
-        setIsSubmitRequest(false)
-    } catch (err) {
-        setIsSubmitRequest(false)
-
-        if(err.response.status === 0)
-        return Notify('error', 'Ocorreu um erro.')
-        return Notify('error', err.response.data.error)
-    }
-}
-
 /* Validar inputs email e senha */
 
 function ValidateInputs(setinputValidation, email, password) {
@@ -81,4 +61,11 @@ function ValidateInputs(setinputValidation, email, password) {
     return CheckEmail
 }
 
-export { Notify, ValidadeEmail, SignInRequest, ValidateInputs, errors, SignUpRequest }
+export { 
+    Notify,
+    ValidadeEmail,
+    SignInRequest,
+    ValidateInputs,
+    errors,
+    SignUpRequest
+}

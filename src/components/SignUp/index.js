@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { errors, SignUpRequest, ValidateInputs } from "../../services/utils"
+import { errors, Notify, SignUpRequest, ValidateInputs } from "../../services/utils"
 import LogIn from "../../pages/images/log-in.svg"
 import Loading from "../Loading"
 
@@ -11,9 +11,20 @@ export default function SignUp({ SetIsSignUp }) {
     const [IsSubmitRequest, setIsSubmitRequest] = useState(false)
 
     async function SignUp() {
-        const Validate = ValidateInputs(setinputValidation, email, password, repeatPassword)
-        if(Validate) if(password) if(password === repeatPassword)
-        await SignUpRequest(setIsSubmitRequest, SetIsSignUp, email, password)
+        const Validate = ValidateInputs(setinputValidation, email, password, repeatPassword) || false
+        
+        if (!!Validate && !!password && password === repeatPassword) {
+        setIsSubmitRequest(true)
+            try {
+                const loginSuccess = await SignUpRequest(email, password)
+                Notify("success", loginSuccess.data.message)
+                SetIsSignUp(false)
+            } catch (err) {
+                Notify("error", err.message)
+            }
+        setIsSubmitRequest(false)
+        }
+        
     }
 
     const inputs = [
