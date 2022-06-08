@@ -15,6 +15,25 @@ export default function SignIn({ SetIsSignUp }) {
         await SignInRequest(setIsSubmitRequest, email, password)
     }
 
+    const inputs = [
+        {
+            "title": "E-mail",
+            "type": "email",
+            "placeholder": "Digite seu e-mail",
+            "ClassName": "",
+            "onChange": (e) => setEmail(e.target.value),
+            "children": inputValidation?.Emptyemail ? <span>{errors.Emptyemail}</span> : inputValidation?.ValidateEmail ? <span>{errors.ValidateEmail}</span> : ''
+        },
+        {
+            "title": "Senha",
+            "type": "password",
+            "ClassName": "Password",
+            "placeholder": "Digite seu senha",
+            "onChange": (e) => setPassword(e.target.value),
+            "children": inputValidation?.Emptypassword ? <span>{errors.Emptypassword}</span> : ''
+        }
+    ]
+
     return (
         <>
             <div className="flex">
@@ -24,24 +43,15 @@ export default function SignIn({ SetIsSignUp }) {
 
             <h2>Lembre suas informações de cadastro.</h2>
 
-            <div className="inputs">
-                <h3>E-mail</h3>
-                <input type="email" placeholder="Digite seu e-mail" onChange={(e) => setEmail(e.target.value)}/>
-                <br/>
-                { 
-                    inputValidation?.Emptyemail ? <span>{errors.Emptyemail}</span> : 
-                    inputValidation?.ValidateEmail ? <span>{errors.ValidateEmail}</span> : ''
-                }
-            </div>
-
-            <div className="inputs">
-                <h3>Senha</h3>
-                <input type="password" placeholder="Digite sua senha" className="Password" onChange={(e) => setPassword(e.target.value)}/>
-                <br/>
-                { 
-                    inputValidation?.Emptypassword ? <span>{errors.Emptypassword}</span> : ''
-                }
-            </div>
+            { inputs.map((index, key) => (
+                    <div className="inputs" key={index.title}>
+                        <h3>{index.title}</h3>
+                        <input type={index.type} placeholder={index.placeholder} onChange={index.onChange} className={index.ClassName}/>
+                        <br/>
+                        {index.children}
+                    </div>
+                ))
+            }
             
             <div className="checkbox flex">
                 <div className="flex">
