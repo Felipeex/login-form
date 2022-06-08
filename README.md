@@ -1,3 +1,0 @@
-# Rocket Coffee
-
-Responsive incomplete
