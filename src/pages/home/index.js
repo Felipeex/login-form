@@ -1,36 +1,22 @@
 /* imports */
-import { useState } from "react";
+import { useContext } from "react";
+import AuthContext from "../../components/Auth/Context";
 import "./index.css";
 
-/* components */
-import SignIn from "../../components/SignIn";
-import Header from "../../components/Header";
-import HomeImage from "../../components/HomeImage";
-import SignUp from "../../components/SignUp";
+const Home = () => {
+  const { setToken } = useContext(AuthContext);
 
-/* notify */
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
-export default function Home() {
-  const [isSignup, SetIsSignUp] = useState(false);
+  function Logoff() {
+    setToken("");
+  }
 
   return (
-    <div className="container">
-      <ToastContainer />
-      <section className="container-form">
-        <Header />
-
-        <form>
-          {!isSignup ? (
-            <SignIn SetIsSignUp={SetIsSignUp} />
-          ) : (
-            <SignUp SetIsSignUp={SetIsSignUp} />
-          )}
-        </form>
-      </section>
-
-      <HomeImage />
-    </div>
+    <>
+      <main>
+        <button onClick={({ target }) => Logoff()}>SAIR</button>
+      </main>
+    </>
   );
-}
+};
+
+export default Home;

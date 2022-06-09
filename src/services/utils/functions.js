@@ -1,6 +1,6 @@
 /* imports */
 import { toast } from "react-toastify";
-import api from "./api";
+import api from "../api";
 
 /* erros de input */
 const errors = {
@@ -46,7 +46,8 @@ function Notify(type, desc) {
 
 /* Validate Email */
 function ValidadeEmail(email) {
-  const ValidadeEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const ValidadeEmail =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return email.match(ValidadeEmail);
 }
 

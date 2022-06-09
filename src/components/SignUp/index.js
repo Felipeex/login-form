@@ -5,7 +5,7 @@ import {
   Notify,
   SignUpRequest,
   ValidateInputs,
-} from "../../services/utils";
+} from "../../services/utils/functions";
 
 /* images */
 import LogIn from "../../pages/images/log-in.svg";
@@ -13,7 +13,7 @@ import LogIn from "../../pages/images/log-in.svg";
 /* components */
 import Loading from "../Loading";
 
-export default function SignUp({ SetIsSignUp }) {
+export const SignUp = ({ SetIsSignUp }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
@@ -112,4 +112,6 @@ export default function SignUp({ SetIsSignUp }) {
       </h6>
     </>
   );
-}
+};
+
+export default SignUp;

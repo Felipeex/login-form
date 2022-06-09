@@ -1,23 +1,27 @@
 /* imports */
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   errors,
   Notify,
   SignInRequest,
   ValidateInputs,
-} from "../../services/utils";
+} from "../../services/utils/functions";
 
 /* images */
 import LogIn from "../../pages/images/log-in.svg";
 
 /* components */
 import Loading from "../Loading";
+import AuthContext from "../Auth/Context";
 
-export default function SignIn({ SetIsSignUp }) {
+const SignIn = ({ SetIsSignUp }) => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [inputValidation, setinputValidation] = useState({});
   const [IsSubmitRequest, setIsSubmitRequest] = useState(false);
+  const { setToken } = useContext(AuthContext);
 
   const inputs = [
     {
@@ -56,6 +60,10 @@ export default function SignIn({ SetIsSignUp }) {
       try {
         const loginSuccess = await SignInRequest(email, password);
         Notify("success", loginSuccess.data.message.status);
+        if (loginSuccess.data.message.token) {
+          setToken(loginSuccess.data.message.token);
+          navigate("/");
+        }
       } catch (err) {
         Notify("error", err.message);
       }
@@ -111,4 +119,6 @@ export default function SignIn({ SetIsSignUp }) {
       </h6>
     </>
   );
-}
+};
+
+export default SignIn;
