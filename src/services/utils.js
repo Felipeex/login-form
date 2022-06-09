@@ -51,7 +51,6 @@ function ValidadeEmail(email) {
 }
 
 /* Validar inputs email e senha */
-
 function ValidateInputs(setinputValidation, email, password) {
     setinputValidation(inputValidation => ({ ...inputValidation, Emptyemail: !email }))
     setinputValidation(inputValidation => ({ ...inputValidation, Emptypassword: !password }))

@@ -1,6 +1,11 @@
+/* imports */
 import { useState } from "react"
 import { errors, Notify, SignInRequest, ValidateInputs } from "../../services/utils"
+
+/* images */
 import LogIn from "../../pages/images/log-in.svg"
+
+/* components */
 import Loading from "../Loading"
 
 export default function SignIn({ SetIsSignUp }) {
@@ -8,6 +13,26 @@ export default function SignIn({ SetIsSignUp }) {
     const [password, setPassword] = useState('')
     const [inputValidation , setinputValidation] = useState({})
     const [IsSubmitRequest, setIsSubmitRequest] = useState(false)
+    
+    const inputs = [
+        {
+            "title": "E-mail",
+            "type": "email",
+            "placeholder": "Digite seu e-mail",
+            "ClassName": "",
+            "onChange": ({ target }) => setEmail(target.value),
+            "children": inputValidation?.Emptyemail ? <span>{errors.Emptyemail}</span> : 
+            inputValidation?.ValidateEmail ? <span>{errors.ValidateEmail}</span> : ''
+        },
+        {
+            "title": "Senha",
+            "type": "password",
+            "ClassName": "Password",
+            "placeholder": "Digite seu senha",
+            "onChange": ({ target }) => setPassword(target.value),
+            "children": inputValidation?.Emptypassword ? <span>{errors.Emptypassword}</span> : ''
+        }
+    ]
 
     async function LoginIn() {
         const Validate = ValidateInputs(setinputValidation, email, password)
@@ -24,24 +49,6 @@ export default function SignIn({ SetIsSignUp }) {
         }
     }
 
-    const inputs = [
-        {
-            "title": "E-mail",
-            "type": "email",
-            "placeholder": "Digite seu e-mail",
-            "ClassName": "",
-            "onChange": (e) => setEmail(e.target.value),
-            "children": inputValidation?.Emptyemail ? <span>{errors.Emptyemail}</span> : inputValidation?.ValidateEmail ? <span>{errors.ValidateEmail}</span> : ''
-        },
-        {
-            "title": "Senha",
-            "type": "password",
-            "ClassName": "Password",
-            "placeholder": "Digite seu senha",
-            "onChange": (e) => setPassword(e.target.value),
-            "children": inputValidation?.Emptypassword ? <span>{errors.Emptypassword}</span> : ''
-        }
-    ]
 
     return (
         <>

@@ -1,6 +1,11 @@
+/* imports */
 import { useState } from "react"
 import { errors, Notify, SignUpRequest, ValidateInputs } from "../../services/utils"
+
+/* images */
 import LogIn from "../../pages/images/log-in.svg"
+
+/* components */
 import Loading from "../Loading"
 
 export default function SignUp({ SetIsSignUp }) {
@@ -24,7 +29,6 @@ export default function SignUp({ SetIsSignUp }) {
             }
         setIsSubmitRequest(false)
         }
-        
     }
 
     const inputs = [
@@ -33,15 +37,16 @@ export default function SignUp({ SetIsSignUp }) {
             "type": "email",
             "placeholder": "Digite seu e-mail",
             "ClassName": "",
-            "onChange": (e) => setEmail(e.target.value),
-            "children": inputValidation?.Emptyemail ? <span>{errors.Emptyemail}</span> : inputValidation?.ValidateEmail ? <span>{errors.ValidateEmail}</span> : ''
+            "onChange": ({ target }) => setEmail(target.value),
+            "children": inputValidation?.Emptyemail ? <span>{errors.Emptyemail}</span> :
+            inputValidation?.ValidateEmail ? <span>{errors.ValidateEmail}</span> : ''
         },
         {
             "title": "Senha",
             "type": "password",
             "ClassName": "Password",
             "placeholder": "Digite seu senha",
-            "onChange": (e) => setPassword(e.target.value),
+            "onChange": ({ target }) => setPassword(target.value),
             "children": inputValidation?.Emptypassword ? <span>{errors.Emptypassword}</span> : ''
         },
         {
@@ -49,7 +54,7 @@ export default function SignUp({ SetIsSignUp }) {
             "type": "password",
             "ClassName": "Password",
             "placeholder": "Digite seu senha",
-            "onChange": (e) => setRepeatPassword(e.target.value),
+            "onChange": ({ target }) => setRepeatPassword(target.value),
             "children": password !== repeatPassword ? <span>{errors.RepeatPassword}</span> : ''
         },
     ]

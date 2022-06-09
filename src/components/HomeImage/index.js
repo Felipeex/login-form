@@ -1,3 +1,4 @@
+/* images */
 import SideImage from "../../pages/images/side-image.jpg"
 
 export default function HomeImage() {
