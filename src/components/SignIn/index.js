@@ -114,7 +114,7 @@ const SignIn = ({ SetIsSignUp }) => {
       </button>
 
       <h6>
-        Não tem uma conta?{" "}
+        Não tem uma conta?
         <span onClick={() => SetIsSignUp(true)}>Registre-se</span>
       </h6>
     </>
