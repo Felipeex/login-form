@@ -33,15 +33,14 @@ async function SignUpRequest(email, password) {
 /* notify function */
 function Notify(type, desc) {
   const position = { position: "top-left" };
-  if (type === "warn") {
-    toast.warn(desc, position);
-  } else if (type === "error") {
-    toast.error(desc, position);
-  } else if (type === "success") {
-    toast.success(desc, position);
-  } else {
-    toast(desc, position);
-  }
+
+  if (type === "warn") return toast.warn(desc, position);
+
+  if (type === "error") return toast.error(desc, position);
+
+  if (type === "success") return toast.success(desc, position);
+
+  if (type !== "random") return toast.warn(desc, position);
 }
 
 /* Validate Email */
