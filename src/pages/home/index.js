@@ -13,7 +13,7 @@ const Home = () => {
   return (
     <>
       <main>
-        <button onClick={({ target }) => Logoff()}>SAIR</button>
+        <button onClick={Logoff}>SAIR</button>
       </main>
     </>
   );

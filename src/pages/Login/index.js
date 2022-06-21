@@ -20,7 +20,6 @@ export const Login = () => {
       <ToastContainer />
       <section className="container-form">
         <Header />
-
         <form>
           {!isSignup ? (
             <SignIn SetIsSignUp={SetIsSignUp} />
@@ -29,7 +28,6 @@ export const Login = () => {
           )}
         </form>
       </section>
-
       <HomeImage />
     </div>
   );

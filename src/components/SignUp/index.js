@@ -106,10 +106,7 @@ export const SignUp = ({ SetIsSignUp }) => {
         {IsSubmitRequest ? <Loading /> : "ENTRAR"}
       </button>
 
-      <h6>
-        já tem uma conta?
-        <span onClick={() => SetIsSignUp(false)}>Fazer Login</span>
-      </h6>
+      <h6>já tem uma conta? <span onClick={() => SetIsSignUp(false)}> Fazer Login</span> </h6>
     </>
   );
 };

@@ -35,11 +35,8 @@ function Notify(type, desc) {
   const position = { position: "top-left" };
 
   if (type === "warn") return toast.warn(desc, position);
-
   if (type === "error") return toast.error(desc, position);
-
   if (type === "success") return toast.success(desc, position);
-
   if (type !== "random") return toast.warn(desc, position);
 }
 
@@ -74,6 +71,6 @@ export {
   ValidadeEmail,
   SignInRequest,
   ValidateInputs,
-  errors,
   SignUpRequest,
+  errors,
 };

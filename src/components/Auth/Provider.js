@@ -12,10 +12,7 @@ const AuthProvider = ({ children }) => {
     const ValidateToken = async () => {
       if (token) {
         try {
-          await api.post(
-            "validate-token",
-            {},
-            {
+          await api.post("validate-token", { }, {
               headers: {
                 authorization: token,
               },
@@ -29,7 +26,7 @@ const AuthProvider = ({ children }) => {
     };
 
     ValidateToken();
-  }, []);
+  }, [token, setToken]);
 
   return (
     <AuthContext.Provider

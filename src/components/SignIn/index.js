@@ -16,12 +16,12 @@ import Loading from "../Loading";
 import AuthContext from "../Auth/Context";
 
 const SignIn = ({ SetIsSignUp }) => {
+  const { setToken } = useContext(AuthContext);
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [inputValidation, setinputValidation] = useState({});
   const [IsSubmitRequest, setIsSubmitRequest] = useState(false);
-  const { setToken } = useContext(AuthContext);
 
   const inputs = [
     {
@@ -113,10 +113,7 @@ const SignIn = ({ SetIsSignUp }) => {
         {IsSubmitRequest ? <Loading /> : "ENTRAR"}
       </button>
 
-      <h6>
-        Não tem uma conta?
-        <span onClick={() => SetIsSignUp(true)}>Registre-se</span>
-      </h6>
+      <h6>Não tem uma conta? <span onClick={() => SetIsSignUp(true)}> Registre-se</span></h6>
     </>
   );
 };
